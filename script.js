@@ -1,6 +1,9 @@
-// ===== Part 2: Functions, Scope, Parameters, Return Values =====
+ /* ================================
+   Part 2: Functions with Parameters,
+   Return Values, Scope
+   ================================ */
 
-// Global variable
+// Global variable for the box element
 let box = document.getElementById("box");
 
 // Function to toggle spinning animation
@@ -18,31 +21,63 @@ function scaleElement(element, factor) {
   return factor; // returning for demonstration
 }
 
-// Function to log scope example
+// Function to toggle bouncing effect
+function toggleBounce(element, shouldBounce) {
+  if (shouldBounce) {
+    element.classList.add("bounce");
+  } else {
+    element.classList.remove("bounce");
+  }
+}
+
+// Local vs Global Scope Example
 function scopeExample() {
   let localMessage = "I am local!";
-  console.log(localMessage); // accessible here
+  console.log(localMessage); // accessible only inside
 }
 scopeExample();
 
-// ===== Part 3: Combining CSS + JS =====
+/* ================================
+   Part 3: Combine CSS + JS
+   ================================ */
 
-// Button to animate the box
+// Animate Box on Button Click
 document.getElementById("animateBtn").addEventListener("click", () => {
-  let newSize = scaleElement(box, 1.5); // scaling box
+  let newSize = scaleElement(box, 1.3); // scale up
   console.log("Box scaled by factor:", newSize);
 
   toggleSpin(box, true); // start spinning
-  setTimeout(() => toggleSpin(box, false), 4000); // stop after 4s
+  toggleBounce(box, true); // bounce as well
+
+  // stop animations after 4s
+  setTimeout(() => {
+    toggleSpin(box, false);
+    toggleBounce(box, false);
+    scaleElement(box, 1); // reset scale
+  }, 4000);
 });
 
-// Modal controls
+/* ================================
+   Extra: Loader Example
+   ================================ */
+const loader = document.getElementById("loader");
+function showLoader(duration) {
+  loader.classList.remove("hidden");
+  setTimeout(() => {
+    loader.classList.add("hidden");
+  }, duration);
+}
+
+/* ================================
+   Modal Controls
+   ================================ */
 const modal = document.getElementById("modal");
 const openModalBtn = document.getElementById("openModalBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
 
 openModalBtn.addEventListener("click", () => {
-  modal.classList.add("show");
+  showLoader(1500); // show loading spinner before opening modal
+  setTimeout(() => modal.classList.add("show"), 1500);
 });
 
 closeModalBtn.addEventListener("click", () => {
