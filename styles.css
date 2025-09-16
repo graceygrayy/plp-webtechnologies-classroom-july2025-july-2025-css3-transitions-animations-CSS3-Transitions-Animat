@@ -1,37 +1,54 @@
 /* General Styling */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
-  background: #f9f9f9;
-  padding: 2rem;
+  background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
-/* Part 1: Button Hover Animation */
+/* Heading */
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Part 1: Buttons with hover animation */
 button {
-  padding: 10px 20px;
-  margin: 10px;
+  padding: 12px 25px;
+  margin: 15px;
   border: none;
-  border-radius: 6px;
+  border-radius: 30px;
   cursor: pointer;
-  background: #4CAF50;
+  background: linear-gradient(135deg, #4CAF50, #2e7d32);
   color: white;
   font-size: 16px;
-  transition: transform 0.3s ease, background 0.3s ease;
+  font-weight: bold;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 button:hover {
   transform: scale(1.1);
-  background: #45a049;
+  background: linear-gradient(135deg, #45a049, #1b5e20);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
 
 /* Part 2 & 3: Box Animation */
 #box {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   margin: 20px auto;
-  background: steelblue;
-  border-radius: 8px;
-  transition: transform 1s ease;
+  background: linear-gradient(135deg, #42a5f5, #1e88e5);
+  border-radius: 15px;
+  transition: transform 1s ease, box-shadow 0.5s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
 /* Keyframe Animation */
@@ -67,8 +84,10 @@ button:hover {
 
 .modal-content {
   background: white;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 30px;
+  border-radius: 15px;
+  width: 300px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   transform: translateY(-50px);
   transition: transform 0.5s ease;
 }
@@ -77,6 +96,14 @@ button:hover {
   transform: translateY(0);
 }
 
-.hidden {
-  display: none;
+#closeModalBtn {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+#closeModalBtn:hover {
+  color: #e53935;
 }
